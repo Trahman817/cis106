@@ -1,0 +1,66 @@
+From smartphones to cars, supercomputers and home appliances, home desktops to enterprise servers, the Linux operating system is everywhere.
+
+Linux has been around since the mid-1990s and has since reached a user-base that spans the globe. Linux is actually everywhere: It’s in your phones, your thermostats, in your cars, refrigerators, Roku devices, and televisions. It also runs most of the Internet, all of the world’s top 500 supercomputers, and the world’s stock exchanges.
+
+But besides being the platform of choice to run desktops, servers, and embedded systems across the globe, Linux is one of the most reliable, secure and worry-free operating systems available.
+
+
+
+Ordered and unordered lists
+ordered lists
+1. I will do my dishes in 4 minutes
+2. I will eat in 3 minutes
+3. I will clean in 2 minutes
+4. I will eat ice cream in 1 minute
+   
+
+Unordered lists
+* chips
+* candy
+* bread
+* cream
+  
+
+this is image of mascot
+![image of mascot](https://en.wikipedia.org/wiki/Tux_%28mascot%29)
+This is linux distributions logo
+
+![Linux distributions logo](https://commons.wikimedia.org/wiki/File:Debian_logo.png)
+
+
+name = "Alice" # String
+a ge = 25 # Integer
+height = 5.6 # Float
+is_student = True # Boolean
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])
+x = 10
+y = 3
+print(x + y) # Addition
+print(x - y) # Subtraction
+print(x * y) # Multiplication
+print(x / y) # Division
+print(x % y) # Modulus
+name = "Alice"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+word = "Python"
+print(word.upper()) # PYTHON
+print(word.lower()) # python
+print(len(word)) # 6
+print(word[0:3]) # Pyt
+x = 10
+y = 20
+if x < y:
+print("x is less than y")
+else:
+print("x is greater than or equal to y")
+for i in range(5):
+print(i)
+
+
+count = 0
+while count < 5:
+print(count)
+count += 1
+![alt text](image.png)
