@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>notes3.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="what-is-a-graphical-user-interface-gui">What is a graphical user interface (GUI)?</h2>
+<p>A Graphical User Interface (GUI) is a visual way of interacting with a computer system. It allows users to interact with the system through icons, buttons, windows, and other graphical elements, rather than typing text-based commands. Common examples of GUIs are the Windows desktop, macOS, and Linux desktop environments like GNOME or KDE.</p>
+<h2 id="what-is-a-desktop-environment">What is a desktop environment?</h2>
+<p>A Desktop Environment (DE) is a complete graphical environment that includes a window manager, icons, panels, and other visual elements. It's the interface you interact with in a computer's GUI. A desktop environment generally provides tools for file management, application launching, and system settings. For example:</p>
+<p>GNOME (popular on Linux)
+KDE Plasma (another Linux DE)
+Windows desktop (on Microsoft Windows)
+macOS desktop (on Apple computers)</p>
+<h2 id="what-is-the-command-line-interface-cli">What is the command line interface (CLI)?</h2>
+<p>A Command Line Interface (CLI) is a text-based interface where you type commands to interact with your computer instead of using a GUI. It's often used for more granular control over the system. You type a command (like ls to list files or cd to change directories) and the system responds by executing that command</p>
+<h2 id="how-do-i-access-the-command-line-interface-cli">How do I access the command line interface (CLI)?</h2>
+<p>ou can access the CLI in various ways, depending on the operating system:
+On Windows: Open the Command Prompt (cmd) or PowerShell.
+On macOS: Open the Terminal application.
+On Linux: Open a Terminal (which can be accessed through a shortcut, menu, or desktop environment).</p>
+<h2 id="what-is-a-virtual-console">What is a virtual console?</h2>
+<p>A Virtual Console is a text-based interface that operates independently of the GUI. On Linux, for example, you can switch between different virtual consoles (like Ctrl+Alt+F1, Ctrl+Alt+F2, etc.) to access different command-line interfaces. These consoles allow you to run commands without a graphical environment running.</p>
+<h2 id="what-is-a-terminal-emulator">What is a terminal emulator?</h2>
+<p>A Terminal Emulator is a software application that emulates a terminal within a GUI. It's a way to run a command-line interface (CLI) within a graphical desktop environment. Examples include:</p>
+<p>GNOME Terminal on Linux</p>
+<p>Konsole on KDE</p>
+<p>Terminal on macOS</p>
+<h2 id="what-is-bash">What is bash?</h2>
+<p>Bash stands for Bourne Again Shell. It is a widely used command-line interpreter for Unix-like operating systems (like Linux and macOS). Bash processes commands entered into the terminal and returns the results. It's often the default shell for many Linux distributions and macOS.</p>
+<h2 id="what-is-the-shell-prompt">What is the shell prompt?</h2>
+<p>The Shell Prompt is the text that appears in the terminal, indicating that the system is ready to accept commands. It typically ends with a special symbol like $ or #. For example:</p>
+<p>In Bash, it might look like: user@hostname:~$</p>
+<p>In a root (administrator) terminal, it could be: root@hostname:~#</p>
+<p>The prompt often gives information like the current user, hostname, and directory you're in, and it signals that you can enter a command.</p>
+<p>Definition, usage, and examples of the following commands:</p>
+<h2 id="clear">clear</h2>
+<p>Definition: Clears the terminal screen.
+Usage: Simply type clear.
+Example: Clears screen</p>
+<h2 id="echo">echo</h2>
+<p>Definition: Prints text or variables to the terminal.
+Usage: echo [text or variable]
+Examples: echo &quot;hello world&quot;</p>
+<h2 id="date">date</h2>
+<p>Definition: Displays or sets the system date and time.
+Usage: date [options]
+Examples:</p>
+<p>date
+date +&quot;%Y-%m-%d %H:%M:%S&quot;</p>
+<h2 id="free">free</h2>
+<p>Definition: Shows memory usage (RAM and swap).
+Usage: free [options]</p>
+<p>Examples:
+free
+free -h    # Human-readable format</p>
+<h2 id="uname">uname</h2>
+<p>Definition: Displays system information.
+Usage: uname [options]
+Examples:
+uname        # Kernel name
+uname -a     # All system info</p>
+<h2 id="history">history</h2>
+<p>Definition: Shows the list of previously used commands.
+Usage: history
+Examples:
+history
+history | grep echo</p>
+<h2 id="man">man</h2>
+<p>Definition: Displays the manual (help) page for a command.
+Usage: man [command]
+Examples:
+man ls
+man uname</p>
+<h2 id="tldr">tldr</h2>
+<p>Definition: Gives simplified, community-contributed help pages for commands (must be installed).
+Usage: tldr [command]
+Examples:
+tldr tar
+tldr echo</p>
+<p>Output is more beginner-friendly than man.</p>
+<h2 id="cheat">cheat</h2>
+<p>Definition: Displays community-written cheat sheets for commands (requires installation).
+Usage: cheat [command]
+Examples:
+cheat find
+cheat curl</p>
+<h2 id="hostname">hostname</h2>
+<p>Definition: Shows or sets the system’s hostname.
+Usage: hostname [newname]
+Examples:
+hostname          # View current hostname
+sudo hostname my-new-hostname  # Set new hostname (may vary by system)</p>
+<h2 id="df">df</h2>
+<p>Definition: Displays disk space usage of file systems.
+Usage: df [options]
+Examples:</p>
+<h2 id="df">df</h2>
+<p>df -h   # Human-readable format</p>
+<h2 id="du">du</h2>
+<p>Definition: Shows disk usage of files and directories.
+Usage: du [options] [directory or file]
+Examples:
+du -h    # Sizes of current directory
+du -sh * # Summary of all items in a folder</p>
+<h2 id="figlet">figlet</h2>
+<p>Definition: Creates large ASCII art text from input (requires installation).
+Usage: figlet [text]
+Examples:
+figlet Hello
+figlet &quot;Linux Rocks!&quot;</p>
+<p>L</p>
+
+</body>
+</html>

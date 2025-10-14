@@ -13,4 +13,8 @@
 ![q4](q4.png)
 
 ## Challenge Question Script Source code:
-[lab3](lab3-script.sh)
+![q5](q5.png)
+![q6](q6.png)
+![q7](q7.png)
+
+
