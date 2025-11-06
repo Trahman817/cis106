@@ -366,87 +366,31 @@ code {
     });
   </script>
 <h1 id="notes-4">Notes 4</h1>
-<h2 id="how-to-install-and-remove-software-using-the-apt-command">How to install and remove software using the APT command</h2>
-<p>APT stands for Advanced Package Tool — it’s a command-line utility used to install, update, upgrade, and remove software packages in Debian-based Linux distributions.</p>
+<h2 id="how-to-install-and-remove-software-using-the-apt-command">How to install and remove software using the APT command.</h2>
 <p>Installing Software with APT</p>
-<ol>
-<li>Update the Package List</li>
-</ol>
-<p>Before installing anything, it’s best to update our package list so APT knows about the latest available software versions.
-bash sudo apt update
-2. Install a Package</p>
-<p>Update package list</p>
-<h2 id="command-sudo-apt-update">Command sudo apt update</h2>
-<p>Install package</p>
+<h2 id="update-the-package-list">Update the Package List</h2>
+<h1 id="command-sudo-apt-update">Command sudo apt update</h1>
+<p><img src="n4.1.png" alt="img"></p>
+<h2 id="install-package">Install package</h2>
 <h2 id="command-sudo-apt-install-package">Command sudo apt install <package></h2>
-<p>Remove package (keep config)</p>
+<p><img src="n4.3.png" alt="img"></p>
+<h2 id="remove-package">Remove package</h2>
 <h2 id="command-sudo-apt-remove-package">Command sudo apt remove <package></h2>
-<p>Remove package (delete config)</p>
+<p><img src="n4.4.png" alt="img"></p>
 <h2 id="command-sudo-apt-purge-package">Command sudo apt purge <package></h2>
-<p>Remove unused packages</p>
-<h2 id="command-sudo-apt-autoremove">Command sudo apt autoremove</h2>
-<p>Upgrade system</p>
-<h2 id="command-sudo-apt-upgrade">Command sudo apt upgrade</h2>
-<h2 id="how-to-create-a-shell-script-step-by-step-including-screenshots-and-how-to-run-it-try-to-be-as-detailed-as-possible">How to create a shell script step by step including screenshots and how to run it. Try to be as detailed as possible.</h2>
-<ol>
-<li>Pick (or create) a file for script</li>
-</ol>
-<p>bash vim example_script.sh
-2) Add the shebang and script content</p>
-<p>At the top of the file put a shebang so the system knows which shell to use:</p>
-<p>#!/usr/bin/env bash</p>
-<h1 id="examplescriptsh---demo-of-a-shell-script-with-args-functions-and-simple-logic">example_script.sh - demo of a shell script with args, functions, and simple logic</h1>
-<h1 id="usage">Usage:</h1>
-<h1 id="examplescriptsh-name-times">./example_script.sh NAME TIMES</h1>
-<h1 id="example">Example:</h1>
-<h1 id="examplescriptsh-alice-3">./example_script.sh Alice 3</h1>
-<p>set -euo pipefail
-IFS=$'\n\t'</p>
-<h1 id="helper-functions">--- helper functions ---</h1>
-<p>log() {</p>
-<h1 id="print-a-timestamped-message-to-stdout">print a timestamped message to stdout</h1>
-<p>printf '%s %s\n' &quot;$(date +'%Y-%m-%d %H:%M:%S')&quot; &quot;$*&quot;
-}</p>
-<p>usage() {
-cat &lt;&lt;EOF
-Usage: $0 NAME TIMES
-NAME   - name to greet
-TIMES  - how many times to print the greeting (positive integer)
-EOF
-}</p>
-<h1 id="parse-args">--- parse args ---</h1>
-<p>if [[ &quot;${1:-}&quot; == &quot;-h&quot; || &quot;${1:-}&quot; == &quot;--help&quot; ]]; then
-usage
-exit 0
-fi</p>
-<p>NAME=&quot;${1:-World}&quot;
-TIMES=&quot;${2:-1}&quot;</p>
-<h1 id="validate-times-is-a-positive-integer">validate TIMES is a positive integer</h1>
-<p>if ! [[ &quot;$TIMES&quot; =~ ^[0-9]+$ ]] || [ &quot;$TIMES&quot; -le 0 ]; then
-log &quot;ERROR: TIMES must be a positive integer.&quot;
-usage
-exit 2
-fi</p>
-<h1 id="main-work">--- main work ---</h1>
-<p>log &quot;Starting greetings: NAME=$NAME TIMES=$TIMES&quot;
-for ((i=1;i&lt;=TIMES;i++)); do
-printf &quot;Hello, %s! (greeting %d/%d)\n&quot; &quot;$NAME&quot; &quot;$i&quot; &quot;$TIMES&quot;
-sleep 0.2
-done
-log &quot;Done.&quot;</p>
-<ol start="3">
-<li>Save the file and make it executable</li>
-</ol>
-<p>From the terminal run:
-chmod +x example_script.sh
-You can verify it’s executable:
-ls -l example_script.sh</p>
-<h1 id="rwxr-xr-x--means-executable">-rwxr-xr-x ... means executable</h1>
-<ol start="4">
-<li>Run the script</li>
-</ol>
-<p>Run with positional arguments (or let defaults apply):
-./example_script.sh Alice 3</p>
+<p><img src="n4.2.png" alt="img"></p>
+<h2 id="how-to-create-a-shell-script-step-by-step-including-screenshots-and-how-to-run-it">How to create a shell script step by step including screenshots and how to run it.</h2>
+<h1 id="pick-a-file-for-script">Pick a file for script</h1>
+<ul>
+<li>Gnome text edit
+<img src="n4.5.png" alt="img"></li>
+<li>Save as and name the shell script
+<img src="n4.6.png" alt="img"></li>
+</ul>
+<h2 id="open-the-shell-script-on-the-terminal">Open the shell script on the terminal</h2>
+<p><img src="n4.7.png" alt="img"></p>
+<h2 id="run-it">Run it</h2>
+<p><img src="n4.8.png" alt="img"></p>
 
 </body>
 </html>
