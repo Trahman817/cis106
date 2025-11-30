@@ -1,4 +1,4 @@
-# Week Report 7
+# Notes 7
 
 ## 1. Wildcards
 + Wildcard: * (Asterisk)
