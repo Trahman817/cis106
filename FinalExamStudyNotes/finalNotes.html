@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>finalNotes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="final-notes">Final Notes</h1>
+<h2 id="1-git-and-markdown"><strong>1) Git and Markdown</strong></h2>
+<h2 id="a-how-to-clone-a-github-repository"><strong>A. How to clone a GitHub repository</strong></h2>
+<p>Cloning a repository means copying a remote GitHub project to your local computer.</p>
+<p>Example: <code>git clone https://github.com/username/repository.git</code></p>
+<h2 id="b-how-to-use-the-git-commands"><strong>B. How to use the git commands</strong></h2>
+<h2 id="git-command-overview">Git Command Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What It Does</th>
+<th>When to Use It</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git pull</code></td>
+<td>Downloads changes from a remote repository and merges them into your local branch.</td>
+<td>Use this before starting work to make sure your local copy is up to date.</td>
+<td><code>git pull origin main</code></td>
+</tr>
+<tr>
+<td><code>git add</code></td>
+<td>Stages files so Git knows which changes you want to include in the next commit.</td>
+<td>Use this after modifying files and before committing.</td>
+<td><code>git add file.txt</code><br><code>git add .</code></td>
+</tr>
+<tr>
+<td><code>git commit</code></td>
+<td>Saves the staged changes to the local repository with a descriptive message.</td>
+<td>Use this after staging files to record your changes.</td>
+<td><code>git commit -m &quot;Updated README&quot;</code></td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>Uploads your local commits to a remote repository (such as GitHub).</td>
+<td>Use this after committing to share your changes with others.</td>
+<td><code>git push origin main</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="typical-git-workflow">Typical Git Workflow</h3>
+<pre class="hljs"><code><div>git pull
+git add .
+git commit -m &quot;Describe your changes&quot;
+git push
+</div></code></pre>
+<h2 id="c-how-to-write-a-markdown-file-that-contains-images-and-proper-formatting"><strong>C. How to write a Markdown file that contains images and proper formatting</strong></h2>
+<h2 id="markdown-summary-table">Markdown Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Syntax / Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headings</td>
+<td><code># Heading 1</code><br><code>## Heading 2</code></td>
+<td>Create titles and subtitles</td>
+</tr>
+<tr>
+<td>Bold Text</td>
+<td><code>**Bold**</code></td>
+<td>Make text bold</td>
+</tr>
+<tr>
+<td>Italic Text</td>
+<td><code>*Italic*</code></td>
+<td>Make text italic</td>
+</tr>
+<tr>
+<td>Strikethrough</td>
+<td><code>~~Text~~</code></td>
+<td>Strike through text</td>
+</tr>
+<tr>
+<td>Unordered List</td>
+<td><code>- Item</code></td>
+<td>Create bullet points</td>
+</tr>
+<tr>
+<td>Ordered List</td>
+<td><code>1. Item</code></td>
+<td>Create numbered lists</td>
+</tr>
+<tr>
+<td>Links</td>
+<td><code>[GitHub](https://github.com)</code></td>
+<td>Add hyperlinks</td>
+</tr>
+<tr>
+<td>Images</td>
+<td><code>![Alt text](image.png)</code></td>
+<td>Display images</td>
+</tr>
+<tr>
+<td>Inline Code</td>
+<td><code>`code`</code></td>
+<td>Show code inline</td>
+</tr>
+<tr>
+<td>Code Block</td>
+<td><code>bash&lt;br&gt;ls -la&lt;br&gt;</code></td>
+<td>Show multi-line code blocks</td>
+</tr>
+<tr>
+<td>Blockquote</td>
+<td><code>&gt; Quote</code></td>
+<td>Highlight quotes or notes</td>
+</tr>
+<tr>
+<td>Horizontal Line</td>
+<td><code>---</code></td>
+<td>Add a dividing line</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d-how-to-convert-a-markdown-file-to-pdf"><strong>D. How to convert a Markdown file to PDF</strong></h2>
+<pre class="hljs"><code><div>1. Open README.md in VS Code
+2. Right-click → Markdown PDF: Export (pdf)
+3. Check the generated README.pdf in the same folder
+</div></code></pre>
+<h2 id="2-how-to-compress-zip-a-directoryfolder-in-debian"><strong>2) How to compress (zip) a directory/folder in Debian</strong></h2>
+<p>First, make sure zip is installed on the OS</p>
+<pre class="hljs"><code><div>whereis zip
+sudo apt update
+sudo apt install zip
+</div></code></pre>
+<p>Example to zip:</p>
+<pre class="hljs"><code><div>Command line to zip a folder:
+
+zip -r my_project.zip my_project/
+
+* my_project/ → the folder you want to compress
+* my_project.zip → the output zip file
+</div></code></pre>
+<h2 id="3-what-are-absolute-paths-and-relative-paths-provide-examples-with-commands-for-examplecreating-a-file-using-an-absolute-path"><strong>3) What are Absolute paths and relative paths? provide examples with commands. For example,creating a file using an absolute path.</strong></h2>
+<p>In Linux, paths specify the location of files and directories. There are two types: <strong>absolute</strong> and <strong>relative</strong>.</p>
+<hr>
+<h4 id="1-absolute-path">1. Absolute Path</h4>
+<ul>
+<li>Specifies the <strong>full path from the root directory <code>/</code></strong>.</li>
+<li>Always starts with <code>/</code>.</li>
+<li>Works regardless of the current working directory.</li>
+</ul>
+<h3 id="example-creating-a-file-using-an-absolute-path">Example: Creating a file using an absolute path</h3>
+<pre class="hljs"><code><div>touch /home/user/documents/file.txt
+</div></code></pre>
+<h4 id="2-relative-path">2. Relative Path</h4>
+<p>Specifies a location relative to the current directory.</p>
+<p>Does not start with /.</p>
+<p>Depends on the directory you are currently in.</p>
+<pre class="hljs"><code><div>cd /home/user
+touch documents/file.txt
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>Path Type</th>
+<th>Starts With</th>
+<th>Works From Anywhere?</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute Path</td>
+<td><code>/</code></td>
+<td>✅ Yes</td>
+<td><code>/home/user/docs/file.txt</code></td>
+</tr>
+<tr>
+<td>Relative Path</td>
+<td>Not <code>/</code></td>
+<td>❌ Only relative to current directory</td>
+<td><code>docs/file.txt</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-how-to-work-with-the-manual-pages-man-command"><strong>4) How to work with the manual pages (man command)?</strong></h2>
+<p>The <code>man</code> command in Linux is used to <strong>view the manual pages</strong> for other commands. It provides detailed information about the command, its options, and usage examples.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div>man command_name
+</div></code></pre>
+<h2 id="5-how-to-parse-search-for-specific-words-in-manual-pages"><strong>5) How to Parse (Search) for Specific Words in Manual Pages</strong></h2>
+<p>Linux allows you to <strong>search for specific words</strong> inside manual pages using built-in search or by combining <code>man</code> with other commands like <code>grep</code>.</p>
+<h4 id="searching-inside-man-using">Searching Inside <code>man</code> Using <code>/</code></h4>
+<p>Open the manual for a command:</p>
+<pre class="hljs"><code><div>man ls
+</div></code></pre>
+<p>Press / followed by the word you want to search:</p>
+<pre class="hljs"><code><div>/color
+</div></code></pre>
+<p>Press Enter to go to the first occurrence.</p>
+<p>Press n to move to the next match and N to move to the previous match.</p>
+<h2 id="6-how-to-redirect-output---and"><strong>6) How to redirect output (&gt;, &gt;&gt;, and |)</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt;</code></td>
+<td>Overwrite output to a file</td>
+<td><code>ls &gt; files.txt</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>Append output to a file</td>
+<td><code>echo &quot;Hello&quot; &gt;&gt; files.txt</code></td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>Pipe output to another command</td>
+<td><code>ls l grep &quot;.txt&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-how-to-append-the-output-of-a-command-to-a-file"><strong>7) How to Append the Output of a Command to a File</strong></h2>
+<p>In Linux, you can <strong>append the output of a command</strong> to an existing file using the <code>&gt;&gt;</code> operator.<br>
+This <strong>adds the new output at the end of the file</strong> without overwriting existing content.</p>
+<p>Syntax:</p>
+<pre class="hljs"><code><div>command &gt;&gt; filename
+</div></code></pre>
+<h2 id="7-how-and-when-to-redirect-output-using-pipes"><strong>7) How and When to Redirect Output Using Pipes (<code>|</code>)</strong></h2>
+<p>In Linux, the <strong>pipe operator <code>|</code></strong> allows you to <strong>send the output of one command as input to another command</strong>.<br>
+This is useful when you want to <strong>process or filter data step by step</strong>.</p>
+<p>Syntax:</p>
+<pre class="hljs"><code><div>command1 | command2
+</div></code></pre>
+<h2 id="8-how-to-use-echo-and-output-redirection-to-create-a-new-file-that-contains-some-text"><strong>8) How to use echo and output redirection to create a new file that contains some text</strong></h2>
+<p>Creating a File with Text Using <code>echo</code> and Output Redirection</p>
+<p>You can use the <code>echo</code> command along with <code>&gt;</code> or <code>&gt;&gt;</code> to <strong>create a new file containing text</strong> in Linux.</p>
+<hr>
+<h2 id="syntax">Syntax</h2>
+<pre class="hljs"><code><div>echo &quot;Your text here&quot; &gt; filename.txt
+</div></code></pre>
+<h2 id="9-how-to-use-wildcards-for-copying-and-moving-multiple-files-at-the-same-time"><strong>9) How to use wildcards (For copying and moving multiple files at the same time)</strong></h2>
+<p>Wildcards are symbols that <strong>match one or more files</strong> in Linux.<br>
+They are useful for copying or moving multiple files at the same time.</p>
+<h4 id="1-common-wildcards">1. Common Wildcards</h4>
+<table>
+<thead>
+<tr>
+<th>Wildcard</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>Matches any number of characters</td>
+<td><code>*.txt</code> → all <code>.txt</code> files</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Matches exactly one character</td>
+<td><code>file?.txt</code> → <code>file1.txt</code> or <code>fileA.txt</code></td>
+</tr>
+<tr>
+<td><code>[ ]</code></td>
+<td>Matches any one character inside brackets</td>
+<td><code>file[123].txt</code> → <code>file1.txt</code>, <code>file2.txt</code>, or <code>file3.txt</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-copy-multiple-files-using-wildcards">2. Copy Multiple Files Using Wildcards</h4>
+<pre class="hljs"><code><div>cp *.txt /home/user/backup/
+</div></code></pre>
+<p>Copies all .txt files from the current directory to /home/user/backup/.</p>
+<pre class="hljs"><code><div>cp file?.txt /home/user/backup/
+</div></code></pre>
+<h4 id="3-move-multiple-files-using-wildcards">3. Move Multiple Files Using Wildcards</h4>
+<pre class="hljs"><code><div>mv *.log /home/user/logs/
+</div></code></pre>
+<p>Moves all .log files to /home/user/logs/.</p>
+<pre class="hljs"><code><div>mv report[1-3].pdf /home/user/reports/
+</div></code></pre>
+<h2 id="10-how-to-use-brace-expansion-for-creating-entire-directory-structures-in-a-single-command"><strong>10) How to use brace expansion (For creating entire directory structures in a single command)</strong></h2>
+<p><strong>Brace expansion <code>{}</code></strong> in Linux allows you to <strong>create multiple files or directories at once</strong> without typing each name individually.</p>
+<h4 id="syntax">Syntax</h4>
+<pre class="hljs"><code><div>mkdir parent_directory/{subdir1,subdir2,subdir3}
+</div></code></pre>
+<p>ExamplesL</p>
+<ul>
+<li>Example 1: Create multiple directories at once</li>
+</ul>
+<pre class="hljs"><code><div>mkdir projects/{project1,project2,project3}
+</div></code></pre>
+<p>Creates:</p>
+<pre class="hljs"><code><div>projects/project1
+projects/project2
+projects/project3
+</div></code></pre>
+<ul>
+<li>Example 2: Create nested directories</li>
+</ul>
+<pre class="hljs"><code><div>mkdir -p projects/{project1,project2}/{src,bin,docs}
+</div></code></pre>
+<p>Creates the following structure:</p>
+<pre class="hljs"><code><div>projects/project1/src
+projects/project1/bin
+projects/project1/docs
+projects/project2/src
+projects/project2/bin
+projects/project2/docs
+</div></code></pre>
+<h2 id="11how-to-create-a-simple-hello-world-shell-script"><strong>11)How to create a simple “hello world” shell script</strong></h2>
+<p>Script in txt editor:</p>
+<pre class="hljs"><code><div>#!/bin/bash
+# This is a simple Hello World script
+echo &quot;Hello, World!&quot;
+</div></code></pre>
+<p>run in console:</p>
+<pre class="hljs"><code><div>bash script.sh
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>Hello, World!
+</div></code></pre>
+<h2 id="12how-to-use-variables-in-a-shell-script"><strong>12)How to use variables in a shell script</strong></h2>
+<pre class="hljs"><code><div>#!/bin/bash
+# Simple script using variables
+
+name=&quot;Alice&quot;
+echo &quot;Hello, $name!&quot;
+</div></code></pre>
+<ul>
+<li>No spaces before or after =</li>
+<li>Use $variable_name to access the value</li>
+</ul>
+<h2 id="13for-each-of-the-following-commands-include-a-definition-syntaxformulausage-and-2---5-well-documented-examples"><strong>13)For each of the following commands, include a definition, syntax/formula/usage/, and 2 - 5 well-documented examples.</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Definition</th>
+<th>Syntax</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>awk</code></td>
+<td>Text processing tool for pattern scanning and processing</td>
+<td><code>awk 'pattern { action }' filename</code></td>
+<td><code>awk '{print $1}' file.txt</code></td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>Display or concatenate file content</td>
+<td><code>cat [options] filename</code></td>
+<td><code>cat file.txt</code></td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>Copy files or directories</td>
+<td><code>cp [options] source destination</code></td>
+<td><code>cp file.txt /home/user/backup/</code></td>
+</tr>
+<tr>
+<td><code>cut</code></td>
+<td>Extract sections from each line of a file</td>
+<td><code>cut -d 'delimiter' -f field_number filename</code></td>
+<td><code>cut -d, -f1 data.csv</code></td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>Search for patterns in files</td>
+<td><code>grep [options] pattern filename</code></td>
+<td><code>grep &quot;error&quot; log.txt</code></td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>Display the first part of a file</td>
+<td><code>head [options] filename</code></td>
+<td><code>head -n 5 file.txt</code></td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>List directory contents</td>
+<td><code>ls [options] [directory]</code></td>
+<td><code>ls -l</code></td>
+</tr>
+<tr>
+<td><code>man</code></td>
+<td>Display manual pages</td>
+<td><code>man command</code></td>
+<td><code>man ls</code></td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>Create new directories</td>
+<td><code>mkdir [options] directory_name</code></td>
+<td><code>mkdir myfolder</code></td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>Move or rename files/directories</td>
+<td><code>mv [options] source destination</code></td>
+<td><code>mv oldname.txt newname.txt</code></td>
+</tr>
+<tr>
+<td><code>tac</code></td>
+<td>Display file contents in reverse</td>
+<td><code>tac filename</code></td>
+<td><code>tac file.txt</code></td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td>Display the last part of a file</td>
+<td><code>tail [options] filename</code></td>
+<td><code>tail -n 10 file.txt</code></td>
+</tr>
+<tr>
+<td><code>touch</code></td>
+<td>Create empty files or update timestamps</td>
+<td><code>touch filename</code></td>
+<td><code>touch newfile.txt</code></td>
+</tr>
+<tr>
+<td><code>tr</code></td>
+<td>Translate or delete characters</td>
+<td><code>tr [options] set1 set2</code></td>
+<td><code>echo &quot;hello&quot; \| tr 'a-z' 'A-Z'</code></td>
+</tr>
+<tr>
+<td><code>tree</code></td>
+<td>Display directory structure in tree format</td>
+<td><code>tree [options] [directory]</code></td>
+<td><code>tree -L 2</code></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
