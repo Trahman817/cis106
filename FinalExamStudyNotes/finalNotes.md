@@ -304,4 +304,3 @@ echo "Hello, $name!"
 | `tr`   | Translate or delete characters | `tr [options] set1 set2` | `echo "hello" \| tr 'a-z' 'A-Z'` |
 | `tree` | Display directory structure in tree format | `tree [options] [directory]` | `tree -L 2` |
 
-
